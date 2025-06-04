@@ -1,16 +1,18 @@
 import React from "react";
-import League from "./League";
-import Team from "./Team";
 
-export default function SearchResults({ leagues, teams }) {
+const SearchResults = ({ sports }) => {
+  if (!sports.length) return <p>Laddar sportdata...</p>;
+
   return (
     <ul className="list-group">
-      {leagues.map((league, index) => (
-        <League key={index} item={league} />
-      ))}
-      {teams.map((team, index) => (
-        <Team key={index} item={team} />
+      {sports.map((sport) => (
+        <li key={sport.key} className="list-group-item">
+          <strong>Sport:</strong> {sport.group} <br />
+          <strong>Liga:</strong> {sport.title}
+        </li>
       ))}
     </ul>
   );
-}
+};
+
+export default SearchResults;

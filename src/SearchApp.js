@@ -1,58 +1,36 @@
 import React, { useState, useRef, useEffect } from "react";
-import League from './League'
-import Team from './Team'
 import axios from "axios";
+import SearchResults from "./SearchResults";
 
-export default function SearchApp() {
-    const [sports] = useState(["Football", "Basketball", "Baseball", "Hockey", "Cricket", "Fighting", "Soccer"]);
-    const [selectedSport, setSelectedSport] = useState(null);
-    const [searchTerm, setSearchTerm] = useState("");
-    const [leagues, setLeagues] = useState([]);
-    const [teams, setTeams] = useState([]);
+const API_KEY = process.env.REACT_APP_API_KEY;
+const API_URL = `https://api.the-odds-api.com/v4/sports/?apiKey=${API_KEY}`;
 
-    useEffect(() => {
-        if (!selectedSport || searchTerm.length < 2) return;
+const SearchApp = () => {
+  const [sports, setSports] = useState([]);
+  const [error, setError] = useState(null);
 
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(
-                "https://therundown-therundown-v1.p.rapidapi.com/sports",
-                {
-                    headers: {
-                    'x-rapidapi-key': process.env.REACT_APP_API_KEY,
-                    'x-rapidapi-host': 'therundown-therundown-v1.p.rapidapi.com'
-                    },
-                }
-                );
+  useEffect(() => {
+    const fetchSports = async () => {
+      try {
+        const response = await axios.get(API_URL);
+        setSports(response.data);
+      } catch (err) {
+        setError("Kunde inte hämta data: " + err.message);
+      }
+    };
 
-                console.log("API-svar:", response.data);
+    fetchSports();
+  }, []);
 
-                setLeagues(response.data?.leagues || []);
-                setTeams(response.data?.teams || []);
-            } catch (error) {
-                console.error("API error:", error);
-                setLeagues([]);
-                setTeams([]);
-            }
-            };
+  return (
+    <div className="container mt-4">
+      {error ? (
+        <p className="text-danger">{error}</p>
+      ) : (
+        <SearchResults sports={sports} />
+      )}
+    </div>
+  );
+};
 
-        fetchData();
-    }, [searchTerm, selectedSport]);
-
-    return (
-        <div className="container mt-4">
-            <div className="mb-3">
-                {sports.map((sport) => (
-                    <button className={`btn me-2 ${selectedSport === sport ? "btn-primary" : "btn-outlisene-primary"}`} key={sport} onClick={() => setSelectedSport(sport)}>
-                        {sport}
-                    </button>
-                ))}
-            </div>
-            {selectedSport && (
-            <div>
-                <input className="form-control" type="text" placeholder={`Search for league or team in ${selectedSport}...`} value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-            </div>
-        )}
-        </div>
-    );
-}
+export default SearchApp;
