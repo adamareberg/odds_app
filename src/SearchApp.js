@@ -1,65 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SearchResults from "./SearchResults";
+import FavoritesCalendar from "./FavoritesCalendar";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
+const API_URL = `https://api.the-odds-api.com/v4/sports/?apiKey=${API_KEY}`;
 
 const SearchApp = () => {
-    const [searchKey, setSearchKey] = useState("");
-    const [teams, setTeams] = useState([]);
-    const [sportTitle, setSportTitle] = useState("");
-    const [error, setError] = useState(null);
+  const [sports, setSports] = useState([]);
+  const [error, setError] = useState(null);
 
-    const fetchTeams = async () => {
-        const API_URL = `https://api.the-odds-api.com/v4/sports/${searchKey}/scores/?daysFrom=1&apiKey=${API_KEY}`;
+  // Favoriter sparas i localStorage
+  const [favorites, setFavorites] = useState(
+    JSON.parse(localStorage.getItem("favorites")) || []
+  );
 
-        try {
-            const response = await axios.get(API_URL);
-            const data = response.data;
-
-            const teamSet = new Set();
-            data.forEach((match) => {
-                if (match.home_team) teamSet.add(match.home_team);
-                if (match.away_team) teamSet.add(match.away_team);
-            });
-
-            setTeams(Array.from(teamSet).sort());
-            setSportTitle(data[0]?.sport_title || searchKey);
-            setError(null);
-        } catch (err) {
-            setError("Kunde inte hämta lag: " + err.message);
-        }
+  useEffect(() => {
+    const fetchSports = async () => {
+      try {
+        const response = await axios.get(API_URL);
+        setSports(response.data);
+      } catch (err) {
+        setError("Kunde inte hämta data: " + err.message);
+      }
     };
-    
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (searchKey.trim() !== "") {
-            fetchTeams();
-        }
-    };
+    fetchSports();
+  }, []);
+
+  // LocalStorage 
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
 
   return (
     <div className="container mt-4">
-        <h4>Exempel på sport_key:</h4>
-        <ul>
-            <li>basketball_nba</li>
-            <li>americanfootball_nfl</li>
-            <li>icehockey_nhl</li>
-            <li>soccer_usa_mls</li>
-        </ul>
-        <form onSubmit={handleSubmit} className="mb-3">
-            <input className="form-control" type="text" value={searchKey} placeholder="Skriv sport_key här..." onChange={(e) => setSearchKey(e.target.value)} />
-            <button type="submit" className="btn btn-primary mt-2">
-                Sök
-            </button>
-        </form>
-      {error && <p className="text-danger">{error}</p>}
-
-      {!error && sportTitle && (
-        <h4 className="mt-4">Liga: {sportTitle}</h4>
+      <h2 className="mb-3">Sports Odds Finder</h2>
+      <FavoritesCalendar favorites={favorites} />
+      {error ? (
+        <p className="text-danger">{error}</p>
+      ) : (
+        <SearchResults
+          sports={sports}
+          favorites={favorites}
+          setFavorites={setFavorites}
+        />
       )}
-
-      <SearchResults teams={teams} />
     </div>
   );
 };
