@@ -3,7 +3,7 @@ import axios from "axios";
 import SearchResults from "./SearchResults";
 import FavoritesCalendar from "./FavoritesCalendar";
 
-const API_KEY = "7be7492e19cfdc33a319e574d508911e";
+const API_KEY = process.env.REACT_APP_API_KEY;
 const API_URL = `https://api.the-odds-api.com/v4/sports/?apiKey=${API_KEY}`;
 
 const SearchApp = () => {
