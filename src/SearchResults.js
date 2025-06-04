@@ -1,14 +1,13 @@
 import React from "react";
 
-const SearchResults = ({ sports }) => {
-  if (!sports.length) return <p>Laddar sportdata...</p>;
+const SearchResults = ({ teams }) => {
+  if (!teams.length) return <p>Laddar sportdata...</p>;
 
   return (
     <ul className="list-group">
-      {sports.map((sport) => (
-        <li key={sport.key} className="list-group-item">
-          <strong>Sport:</strong> {sport.group} <br />
-          <strong>Liga:</strong> {sport.title}
+      {teams.map((team) => (
+        <li key={team.key} className="list-group-item">
+          <strong>Lag:</strong> {team} <br />
         </li>
       ))}
     </ul>
