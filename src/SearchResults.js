@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const API_KEY = "7be7492e19cfdc33a319e574d508911e";
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const SearchResults = ({ sports, favorites, setFavorites }) => {
   const [odds, setOdds] = useState({});
