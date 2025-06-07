@@ -54,8 +54,11 @@ const SearchApp = () => {
                 </div>
             )}
         </div>
-      </div>  
+      </div> 
+
       <FavoritesCalendar favorites={favorites} />
+
+      
       {error ? (
         <p className="text-danger">{error}</p>
       ): null}

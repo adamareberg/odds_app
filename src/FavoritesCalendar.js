@@ -15,6 +15,7 @@ const FavoritesCalendar = ({ favorites }) => {
     );
   });
 
+  
   return (
     <div className="mb-4">
       <h4>Kalender med sparade matcher</h4>
