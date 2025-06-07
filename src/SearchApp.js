@@ -39,13 +39,13 @@ const SearchApp = () => {
   );
 
   return (
-    <div className="container mt-4">
-      <h2 className="mb-3">Sports Odds Finder</h2>
-      <div className="d-flex justify-content-end mb-3 position-relative">
-        <div className="w-50">
-            <input className="form-control form-control-sm w-100 mb-3 ms-auto" type="text" placeholder="Sök sport eller liga..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
+    <div className="search-container">
+      <h2 className="search-header">Sports Odds Finder</h2>
+      <div className="d-flex justify-content-end">
+        <div className="position-relative" style={{ width: '50%' }}>
+            <input className="form-control search-input" type="text" placeholder="Sök sport eller liga..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
             {searchTerm.trim() !== "" && (
-                <div className="bg-white border rounded shadow-sm mt-1 position-absolute w-50" style={{ textAlign: "center", zIndex: 1000, maxHeight: "300px", overflowY: "auto" }}>
+                <div className="results-dropdown">
                     <SearchResults
                     sports={filteredSports}
                     favorites={favorites}
@@ -67,3 +67,6 @@ const SearchApp = () => {
 };
 
 export default SearchApp;
+
+
+// <div className="search-results-dropdown" style={{ textAlign: "center", zIndex: 1000, maxHeight: "300px", overflowY: "auto" }}

@@ -55,7 +55,7 @@ const SearchResults = ({ sports, favorites, setFavorites }) => {
   return (
     <ul className="list-group">
       {sports.map((sport) => (
-        <li key={sport.key} className="list-group-item mb-3">
+        <li key={sport.key} className="result-item">
           <strong>Sport:</strong> {sport.group} <br />
           <strong>Liga:</strong> {sport.title}
           <br />
@@ -94,7 +94,7 @@ const SearchResults = ({ sports, favorites, setFavorites }) => {
                     match.bookmakers[0] &&
                     match.bookmakers[0].markets[0] &&
                     match.bookmakers[0].markets[0].outcomes.map((outcome) => (
-                      <div key={outcome.name}>
+                      <div key={outcome.name} className="match-odds">
                         {outcome.name}: {outcome.price}
                       </div>
                     ))}
