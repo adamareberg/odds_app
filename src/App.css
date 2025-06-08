@@ -1,0 +1,405 @@
+
+:root {
+  --primary-dark: #0d1b2a;
+  --secondary-dark: #1b263b;
+  --accent-color: #ff6d00;
+  --white-color: #ffffff;
+}
+
+
+body {
+  background-color: #121212;
+  color: white;
+}
+
+
+.bg-primary {
+  background-color: var(--primary-dark) !important;
+  box-shadow: 1px 4px 10px var(--accent-color);
+}
+
+.navbar-brand {
+  font-weight: 750;
+  letter-spacing: 1px;
+  
+}
+
+.nav-link {
+  color: var(--white-color) !important;
+  padding: 8px 15px !important;
+  margin: 0 5px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  background-color: var(--accent-color) !important;
+}
+
+
+.dropdown-menu {
+  background-color: var(--secondary-dark) !important;
+  border: none;
+}
+
+.dropdown-item {
+  color: var(--white-color) !important;
+  padding: 8px 16px !important;
+  font-weight: 500;
+}
+
+.dropdown-item:hover {
+  background-color: var(--accent-color) !important;
+  color: black !important;
+}
+
+.app-container {
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+}
+
+h2 {
+  color: var(--white-color);
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--accent-color);
+}
+
+.react-calendar {
+  width: 350px;
+  max-width: 100%;
+  background: var(--primary-dark);
+  border: 1px solid var(--accent-color);
+  color: var(--white-color);
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  line-height: 1.125em;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 100%;
+  max-width: 450px;
+  font-family: inherit;
+  box-shadow: 1px 2px 5px var(--accent-color);
+}
+
+
+.react-calendar--doubleView {
+  width: 700px;
+}
+
+.react-calendar--doubleView .react-calendar__viewContainer {
+  display: flex;
+  margin: -0.5em;
+}
+
+.react-calendar--doubleView .react-calendar__viewContainer > * {
+  width: 50%;
+  margin: 0.5em;
+}
+
+.react-calendar,
+.react-calendar *,
+.react-calendar *:before,
+.react-calendar *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.react-calendar button {
+  margin: 0;
+  border: 0;
+  outline: none;
+}
+
+.react-calendar button:enabled:hover {
+  cursor: pointer;
+}
+
+
+.react-calendar__navigation {
+  display: flex;
+  height: 44px;
+  margin-bottom: 1em;
+}
+
+.react-calendar__navigation button {
+  min-width: 44px;
+  color: var(--white-color);
+  background: none;
+  border: none;
+  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 600;
+  min-width: 44px;
+  padding: 0.5rem;
+}
+
+.react-calendar__navigation button:disabled {
+  background-color: none;
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background-color: var(--accent-color);
+
+
+}
+
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  text-transform: uppercase;
+  font: inherit;
+  font-size: 0.85em;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--white-color);
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  padding: 0.5em;
+}
+
+.react-calendar__month-view__weekNumbers .react-calendar__tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: inherit;
+  font-size: 0.75em;
+  font-weight: bold;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: #d10000 !important;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth,
+.react-calendar__decade-view__years__year--neighboringDecade,
+.react-calendar__century-view__decades__decade--neighboringCentury {
+  color: #e9e7e7;
+}
+
+.react-calendar__year-view .react-calendar__tile,
+.react-calendar__decade-view .react-calendar__tile,
+.react-calendar__century-view .react-calendar__tile {
+  padding: 2em 0.5em;
+}
+
+.react-calendar__tile {
+  max-width: 100%;
+  padding: 10px 6.6667px;
+  background: none;
+  text-align: center;
+  font: inherit;
+  font-size: 0.833em;
+}
+
+
+.react-calendar__tile:disabled {
+  background-color: #f0f0f0 !important;
+  color: #ababab !important;
+}
+
+.react-calendar__tile:enabled {
+  color: var(--accent-color);
+}
+
+.react-calendar__month-view__days__day--neighboringMonth:disabled,
+.react-calendar__decade-view__years__year--neighboringDecade:disabled,
+.react-calendar__century-view__decades__decade--neighboringCentury:disabled {
+  color: #cdcdcd !important;
+  background-color: none !important;
+}
+
+.react-calendar__tile:enabled:hover,
+.react-calendar__tile:enabled:focus {
+  background-color: var(--accent-color);
+  color: var(--white-color);
+}
+
+.react-calendar__tile--now {
+  background: #ffff76;
+}
+
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  background: #ffffa9;
+}
+
+.react-calendar__tile--hasActive {
+  background: #76baff;
+}
+
+.react-calendar__tile--hasActive:enabled:hover,
+.react-calendar__tile--hasActive:enabled:focus {
+  background: #a9d4ff;
+}
+
+.react-calendar__tile--active {
+  background: var(--accent-color);
+  color: white !important;
+}
+
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background: var(--accent-color);
+}
+
+.react-calendar--selectRange .react-calendar__tile--hover {
+  background-color: #e6e6e6;
+}
+
+
+
+.search-container {
+  background-color: var(--primary-dark);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  border: 1px solid var(--accent-color);
+  box-shadow: 0 2px 10px rgba(255, 109, 0, 0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.search-header {
+  color: var(--accent-color);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 0.5rem;
+}
+
+
+.search-input {
+  background-color: var(--secondary-dark) !important;
+  border: 1px solid var(--accent-color) !important;
+  color: var(--white-color) !important;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.search-input-container {
+    margin-bottom: 1.5rem;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.836);
+}
+
+.search-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 109, 0, 0.25);
+  border-color: var(--accent-color) !important;
+}
+
+
+.results-dropdown {
+  background-color: var(--secondary-dark) !important;
+  border: 1px solid var(--accent-color) !important;
+  color: var(--white-color);
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 1000;
+  border-radius: 0 0 4px 4px;
+  margin-top: -1px;
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  left: 0%;
+  box-shadow: 0 2px 10px rgba(255, 109, 0, 0.1);
+}
+
+
+.result-item {
+  background-color: var(--primary-dark);
+  border-bottom: 1px solid var(--secondary-dark);
+  padding: 1rem;
+  transition: all 0.2s ease;
+  color: var(--white-color);
+}
+
+.result-item:hover {
+  background-color: rgba(255, 111, 0, 0.062);
+}
+
+.result-item strong {
+  color: var(--accent-color);
+}
+
+
+.btn-primary {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--primary-dark);
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background-color: #ff8a00;
+  border-color: #ff8a00;
+}
+
+.btn-primary:disabled {
+  background-color: rgba(255, 109, 0, 0.5);
+  border-color: rgba(255, 109, 0, 0.5);
+}
+
+.btn-outline-success {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.btn-outline-success:hover {
+  background-color: var(--accent-color);
+  color: var(--primary-dark);
+}
+
+.btn-outline-success:disabled {
+  border-color: rgba(255, 109, 0, 0.3);
+  color: rgba(255, 109, 0, 0.5);
+  background-color: transparent;
+}
+
+
+.match-odds {
+  margin-top: 0.5rem;
+}
+
+.match-odds div {
+  display: inline-block;
+  background-color: rgba(255, 109, 0, 0.2);
+  color: var(--accent-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+  font-size: 0.85rem;
+}
+
+
+.text-danger {
+  color: #ff6d6d !important;
+  margin-top: 0.5rem;
+}
+
+
+small {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+}
+
+.calendar-container {
+  position: relative;
+  z-index: 1;
+}
+
+
+@media (max-width: 768px) {
+  .position-relative {
+    width: 100% !important;
+  }
+}
