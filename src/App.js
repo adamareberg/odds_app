@@ -1,7 +1,6 @@
 import SearchApp from "./SearchApp";
 import FavoritesPage from "./FavoritesPage";
 import SportsPage from "./SportsPage";
-import SearchResults from "./SearchResults";
 import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import {Routes, Route, Link} from 'react-router-dom';
