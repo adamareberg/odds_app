@@ -403,3 +403,22 @@ small {
     width: 100% !important;
   }
 }
+
+
+
+.dark-accordion {
+  --bs-accordion-bg: var(--secondary-dark);
+  --bs-accordion-color: var(--white-color);
+  --bs-accordion-button-active-bg: var(--secondary-dark);
+}
+
+
+.dark-accordion .accordion-button {
+  background-color: var(--secondary-dark);
+  color: var(--white-color);
+}
+
+
+.dark-accordion .accordion-button:focus {
+  box-shadow: none;
+}
