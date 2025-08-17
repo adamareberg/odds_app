@@ -35,7 +35,7 @@ function FavoritesPage() {
               <li key={fav.id} className="mb-3">
                 <strong>League:</strong> {fav.title}
                 {fav.group ? (
-                  <span className="text-muted"> &mdash; {fav.group}</span>
+                  <span> &mdash; {fav.group}</span>
                 ) : null}
                 <div>
                   <button
